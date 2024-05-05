@@ -330,7 +330,7 @@ def login():
                     if guess == password:
                         print(f"{WIPE}{TITLE}{GREEN}  - S T A T S -\n{WHITE}Welcome {GREEN}{user_name}\n\n{YELLOW}calculating statistics...{WHITE}", end = "\r")
                         try:
-
+                            
                             stats = [len(filecontent), 0, 0, 0, 0, 0]
                             for game in filecontent:
                                 listg = game[7:-3].split("', '")
@@ -340,8 +340,9 @@ def login():
                                 else:
                                     if len(listg)<6:
                                         stats[5] += 1
-                            stats[2] = (stats[1]/stats[0])*100
-                            stats[4] = (stats[3]/stats[0])
+                            if len(filecontent) > 0:
+                                stats[2] = (stats[1]/stats[0])*100
+                                stats[4] = (stats[3]/stats[0])
 
                             input(f"{UP_LINE}{WIPE_LINE}{GREY}Enter to start!\n{WIPE_LINE}{WHITE}Games played: {stats[0]}\n{WIPE_LINE}Games won: {stats[1]}\n{WIPE_LINE}Success rate: {stats[2]}\n{WIPE_LINE}Total score: {stats[3]}\n{WIPE_LINE}AVG score: {stats[4]}\n{WIPE_LINE}Gave up: {stats[5]}\n")
                         except:
